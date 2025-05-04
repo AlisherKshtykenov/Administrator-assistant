@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backend Form</title>
+  <link rel="stylesheet" href="{% static 'register.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="nav">
+    <div class="logo">BACKEND<span class="dot">•</span></div>
+    <nav class="links">
+      <a href="#">Portofolio</a>
+      <a href="#">Contact</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="form-section">
+      <h1>Let’s bring your vision to life!</h1>
+      <p>
+        Fill out the form to start creating your perfect product. Share your ideas with us, and we’ll help bring them to life!
+      </p>
+      <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        <div class="name-fields">
+          <input type="text" name="last_name" placeholder="Last Name" />
+          <input type="text" name="first_name" placeholder="First Name" />
+        </div>
+        <input type="email" name="email" placeholder="Email" />
+        <input type="tel" name="phone" placeholder="Phone Number" />
+        <textarea name="message" placeholder="Message"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <div class="image-section">
+      <img src="{% static 'img/IMG_8426.jpeg' %}" alt="Profile" />
+      <blockquote>
+        “Before starting a pair programming session, remove all sharp objects from the room.”<br/>
+        <span>Brendan Eich</span>
+      </blockquote>
+    </div>
+  </main>
+
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
